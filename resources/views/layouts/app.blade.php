@@ -85,5 +85,8 @@
             @yield('content')
         </main>
     </div>
+<div>
+    Phone: [phone]
+</div>
 </body>
 </html>
