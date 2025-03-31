@@ -5,14 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\Lecturer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class CourseController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+
         $courses = Course::all();
         return view('courses.index', compact('courses'));
     }

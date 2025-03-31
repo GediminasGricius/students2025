@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\LangController;
 use App\Http\Controllers\LecturerController;
 use App\Http\Controllers\StudentController;
 use App\Http\Middleware\Bug;
@@ -23,3 +24,6 @@ Route::resource('students', StudentController::class)->only('destroy')->middlewa
 
 Route::resource('lecturers', LecturerController::class);
 Route::resource('courses', CourseController::class);
+
+
+Route::get('setLanguage/{lang}', [LangController::class, 'switchLang'])->name('setLanguage');

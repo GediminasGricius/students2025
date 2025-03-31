@@ -7,14 +7,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 mt-3">
-                <a href="{{ route("students.create") }}" class="btn btn-success">Add new student</a>
+                <a href="{{ route("students.create") }}" class="btn btn-success">{{ __('Add new student') }}</a>
                 <table class="table">
                     <tbody>
                         <tr>
-                            <th>Name</th>
-                            <th>Surname</th>
-                            <th>Email</th>
-                            <th>Phone</th>
+                            <th>{{ __("Name") }}</th>
+                            <th>{{ __("Surname") }}</th>
+                            <th>{{ __("Email") }}</th>
+                            <th>{{ __("Phone") }}</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -28,7 +28,9 @@
 
                                 <td>{{$student->phone}}</td>
                                 <td>
-                                    <a href="{{ route('students.edit', $student->id) }}" class="btn btn-primary">Edit</a>
+                                    <a href="{{ route('students.edit', $student->id) }}" class="btn btn-primary">
+                                       {{ __("Edit") }}
+                                    </a>
 
 
                                 </td>
@@ -36,7 +38,7 @@
                                     <form action="{{ route('students.destroy', $student->id) }}" method="post">
                                         @csrf
                                         @method("DELETE")
-                                        <button href="" class="btn btn-danger">Delete</button>
+                                        <button href="" class="btn btn-danger">{{ __("Delete") }}</button>
                                     </form>
 
                                 </td>
