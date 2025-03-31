@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StudentRequest;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
 class StudentController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      */
@@ -27,11 +30,13 @@ class StudentController extends Controller
         return view('students.create'        );
     }
 
+
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StudentRequest $request)
     {
+        $request->validate();
         $student = new Student();
         $student->name=$request->name;
         $student->surname=$request->surname;
@@ -61,8 +66,9 @@ class StudentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Student $student)
+    public function update(StudentRequest $request, Student $student)
     {
+        $request->validate();
         $student->name=$request->name;
         $student->surname=$request->surname;
         $student->email=$request->email;

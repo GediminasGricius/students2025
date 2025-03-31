@@ -5,5 +5,7 @@
     "Email": "El. pašto adresas",
     "Phone": "Telefonas",
     "Edit": "Redaguoti",
-    "Delete": "Ištrinti"
+    "Delete": "Ištrinti",
+    "Field name is required, min:2 max:20":"Laukelis vardas yra privalomas  ir turi būti nuo 8-20 simboliu",
+    "Field surname is required, min:2 max:20":"Laukelis pavardė yra privalomas  ir turi būti nuo 8-20 simboliu"
 }
