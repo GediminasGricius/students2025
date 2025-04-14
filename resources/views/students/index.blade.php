@@ -34,18 +34,23 @@
 
                                 <td>{{$student->phone}}</td>
                                 <td>
-                                    <a href="{{ route('students.edit', $student->id) }}" class="btn btn-primary">
-                                       {{ __("Edit") }}
-                                    </a>
+                                    @can('editStudent', $student)
+                                        <a href="{{ route('students.edit', $student->id) }}" class="btn btn-primary">
+                                           {{ __("Edit") }}
+                                        </a>
+                                    @endcan
 
 
                                 </td>
                                 <td>
-                                    <form action="{{ route('students.destroy', $student->id) }}" method="post">
-                                        @csrf
-                                        @method("DELETE")
-                                        <button href="" class="btn btn-danger">{{ __("Delete") }}</button>
-                                    </form>
+
+                                    @can('deleteStudent', $student)
+                                        <form action="{{ route('students.destroy', $student->id) }}" method="post">
+                                            @csrf
+                                            @method("DELETE")
+                                            <button href="" class="btn btn-danger">{{ __("Delete") }}</button>
+                                        </form>
+                                    @endcan
 
                                 </td>
                             </tr>

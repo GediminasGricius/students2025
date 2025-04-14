@@ -58,8 +58,11 @@ class StudentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Student $student)
+    public function edit(Student $student, Request $request)
     {
+        if (! $request->user()->can('editStudent', $student) ){
+            return redirect()->route('students.index');
+        }
         return view('students.edit', ['student' => $student]);
     }
 
@@ -68,7 +71,9 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        //$request->validate();
+        if (! $request->user()->can('editStudent', $student) ){
+            return redirect()->route('students.index');
+        }
 
 
 
@@ -90,8 +95,11 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Student $student)
+    public function destroy(Student $student, Request $request)
     {
+        if (! $request->user()->can('deleteStudent', $student) ){
+            return redirect()->route('students.index');
+        }
         $student->delete();
         return redirect()->route('students.index');
     }

@@ -31,8 +31,9 @@
                                 </td>
 
                                 <td>
-                                    <a href="{{ route('lecturers.edit', $lecturer->id) }}" class="btn btn-primary">Edit</a>
-
+                                    @can('update',$lecturer)
+                                        <a href="{{ route('lecturers.edit', $lecturer->id) }}" class="btn btn-primary">Edit</a>
+                                    @endcan
 
                                 </td>
                                 <td>
