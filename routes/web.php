@@ -25,5 +25,6 @@ Route::resource('students', StudentController::class)->only('destroy')->middlewa
 Route::resource('lecturers', LecturerController::class);
 Route::resource('courses', CourseController::class);
 
+Route::get('student/{id}/deletePhoto', [StudentController::class, 'deletePhoto'])->name('students.deletePhoto');
 
 Route::get('setLanguage/{lang}', [LangController::class, 'switchLang'])->name('setLanguage');

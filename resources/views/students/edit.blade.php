@@ -18,7 +18,7 @@
                     </div>
 
                 @endif
-               <form method="post" action="{{ route("students.update", $student) }}">
+               <form method="post" action="{{ route("students.update", $student) }}" enctype="multipart/form-data">
                    @csrf
                    @method('PUT')
                    <div class="mb-3">
@@ -37,6 +37,19 @@
                        <label class="form-label">Phone:</label>
                        <input type="text" class="form-control" name="phone" value="{{ $student->phone }}">
                    </div>
+                   @if ($student->photo === null)
+                   <div class="mb-3">
+                       <label class="form-label">Photo:</label>
+                       <input type="file" class="form-control" name="photo" >
+                   </div>
+                   @else
+                       <img src="/storage/{{ $student->photo }}" alt="" style="width: 100px" class="mb-3"> <br>
+                       <a href="{{ route('students.deletePhoto', $student) }}" class="btn btn-danger">Delete</a> <br>
+                   @endif
+                   <hr>
+
+
+
                    <button type="submit" class="btn btn-success">Update</button>
 
                </form>

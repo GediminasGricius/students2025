@@ -66,13 +66,22 @@ class StudentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StudentRequest $request, Student $student)
+    public function update(Request $request, Student $student)
     {
-        $request->validate();
+        //$request->validate();
+
+
+
         $student->name=$request->name;
         $student->surname=$request->surname;
         $student->email=$request->email;
         $student->phone=$request->phone;
+
+        if ($request->hasFile("photo")){
+            $tmp=$request->file("photo")->store("/public");
+            $student->photo=$request->file("photo")->hashName();
+        }
+
         $student->save();
 
         return redirect()->route('students.index');
@@ -85,5 +94,13 @@ class StudentController extends Controller
     {
         $student->delete();
         return redirect()->route('students.index');
+    }
+
+    public function deletePhoto($student){
+        $student=Student::find($student);
+        unlink( storage_path()."/app/public/".$student->photo);
+        $student->photo=null;
+        $student->save();
+        return redirect()->back();
     }
 }
